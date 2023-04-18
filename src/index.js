@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import "./styles.scss"
 
 document.addEventListener('DOMContentLoaded', function () {
     var element = document.getElementById('ym-meeting-admin-app');

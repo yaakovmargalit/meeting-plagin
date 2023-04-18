@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAEA;EAII;AAJJ;AAKE;EACE;AAHJ,C","sources":["webpack://meeting-plagin/./src/styles.scss"],"sourcesContent":["\r\n\r\n.main-app-settings{\r\n    // *{\r\n    //     direction: rtl;\r\n    // }\r\n    background-color: rgb(247, 247, 247);\r\n  h2{\r\n    direction: rtl;\r\n  }\r\n}"],"names":[],"sourceRoot":""}
