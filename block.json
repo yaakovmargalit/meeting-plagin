@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "ymmeeting/set-new-meeting",
+  "title": "קביעת תור",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "script": "file:./build/front.js",
+  "style": "file:./build/front.css"
+}

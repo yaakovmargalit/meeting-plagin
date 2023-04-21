@@ -1,11 +1,32 @@
 import React from 'react';
+import app from '@wordpress/blocks'
 import ReactDOM from 'react-dom';
-import App from './App';
+import BackApp from './BackApp';
 import "./styles.scss"
-
-document.addEventListener('DOMContentLoaded', function () {
-    var element = document.getElementById('ym-meeting-admin-app');
-    if (typeof element !== 'undefined' && element !== null) {
-        ReactDOM.render(<App />, document.getElementById('ym-meeting-admin-app'));
+wp.blocks.registerBlockType("ymmeeting/set-new-meeting", {
+    title: "קביעת תור",
+    icon: "smiley",
+    category: "common",
+    attributes: {
+      question: { type: "string" },
+      answers: { type: "array", default: [""] },
+      correctAnswer: { type: "number", default: undefined },
+      bgColor: { type: "string", default: "#EBEBEB" },
+      theAlignment: { type: "string", default: "left" }
+    },
+    description: "קביעת תור בקלות",
+    example: {
+      attributes: {
+        question: "What is my name?",
+        correctAnswer: 3,
+        answers: ["Meowsalot", "Barksalot", "Purrsloud", "Brad"],
+        theAlignment: "center",
+        bgColor: "#CFE8F1"
+      }
+    },
+    edit: ()=>(<div>אני סתם </div>),
+    save: function (props) {
+      return null
     }
-})
+  })
+  
