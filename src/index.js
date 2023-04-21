@@ -1,9 +1,11 @@
 import React from 'react';
-import app from '@wordpress/blocks'
+import { registerBlockType } from '@wordpress/blocks';
+import { InspectorControls, BlockControls, AlignmentToolbar, useBlockProps } from "@wordpress/block-editor"
+
 import ReactDOM from 'react-dom';
 import BackApp from './BackApp';
 import "./styles.scss"
-wp.blocks.registerBlockType("ymmeeting/set-new-meeting", {
+registerBlockType("ymmeeting/set-new-meeting", {
     title: "קביעת תור",
     icon: "smiley",
     category: "common",
@@ -24,9 +26,20 @@ wp.blocks.registerBlockType("ymmeeting/set-new-meeting", {
         bgColor: "#CFE8F1"
       }
     },
-    edit: ()=>(<div>אני סתם </div>),
+    edit: Edit,
     save: function (props) {
       return null
     }
   })
+
+
+  function Edit(){
+
+    const blockProps = useBlockProps()
+    return (
+      <div {...blockProps}>
+        מהלך עריכה
+      </div>
+    )
+  }
   

@@ -24,7 +24,7 @@ class Create_front_app
     function front_html($attributes)
     {
         ob_start(); ?>
-            <div id="ym-meeting-front-app"></div>
+            <div class="ym-meeting-front-app"></div>
 
     <?php return ob_get_clean();
     }
