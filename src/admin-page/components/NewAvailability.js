@@ -2,36 +2,32 @@ import React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-
-const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay }) => {
+const NewAvailability = ({open, handleClose,selctedDayCode,selctedDay}) => {
     return (
         <div>
             <Dialog
-                dir="rtl"
+            dir="rtl"
                 open={open}
                 keepMounted
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{"הוספת זמינות ליום" + " " + selctedDay}</DialogTitle>
+                <DialogTitle>{"הוספת זמינות ליום" +" " + selctedDay}</DialogTitle>
                 <DialogContent>
-                    <TextField
-                        id="outlined-number"
-                        label="Number"
-                        type="number"
-        
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+
+                <MobileTimePicker label={'"שעת התחלה"'} views={['hours','minutes']} />
+                </LocalizationProvider>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Disagree</Button>
-                    <Button onClick={handleClose}>Agree</Button>
+                    <Button onClick={handleClose}>ביטול</Button>
+                    <Button onClick={handleClose}>הוספה</Button>
                 </DialogActions>
             </Dialog>
         </div>
