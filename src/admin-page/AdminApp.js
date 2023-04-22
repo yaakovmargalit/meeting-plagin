@@ -1,11 +1,11 @@
 import React from 'react';
 import Settings from './components/Settings';
 
-function BackApp() {
+function AdminApp() {
     return(
         <React.Fragment>
             <Settings />
         </React.Fragment>
     )
 }
-export default BackApp;
+export default AdminApp;

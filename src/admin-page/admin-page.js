@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BackApp from './BackApp';
-
+import AdminApp from './AdminApp';
+import './styles/admin.scss'
 document.addEventListener('DOMContentLoaded', function () {
     var element = document.getElementById('ym-meeting-admin-app');
     if (typeof element !== 'undefined' && element !== null) {
-        ReactDOM.render(<BackApp />, document.getElementById('ym-meeting-admin-app'));
+        ReactDOM.render(<AdminApp />, document.getElementById('ym-meeting-admin-app'));
     }
 })

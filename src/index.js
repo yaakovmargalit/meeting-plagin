@@ -3,7 +3,6 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, BlockControls, AlignmentToolbar, useBlockProps } from "@wordpress/block-editor"
 
 import ReactDOM from 'react-dom';
-import BackApp from './BackApp';
 import "./styles.scss"
 registerBlockType("ymmeeting/set-new-meeting", {
     title: "קביעת תור",

@@ -1,0 +1,41 @@
+.days-settings {
+  * {
+    direction: rtl;
+  }
+  .day-list {
+    display: flex;
+    flex-wrap: wrap;
+    .day-box {
+      width: 13%;
+      min-width: 130px;
+      margin-left: 4px;
+      .day-title {
+        height: 25px;
+        border-bottom: 2px solid rgba(35, 54, 161, 0.199);
+        text-align: center;
+      }
+      .availability-list {
+        padding: 5px;
+        .availability-box {
+          border: 2px solid rgba(35, 54, 161, 0.568);
+          border-radius: 5px;
+          padding: 5px;
+          p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .add-availability{
+        margin: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        border: 2px solid rgba(35, 54, 161, 0.568);
+        border-radius: 5px;
+
+        align-items: center;
+      }
+    }
+  }
+}
