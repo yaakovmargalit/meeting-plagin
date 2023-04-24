@@ -35,8 +35,9 @@ class Create_front_app
 define ( 'YM_MEETING_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define ( 'YM_MEETING_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
 
-add_action( 'admin_enqueue_scripts', 'load_scripts' );
+add_action( 'admin_enqueue_scripts', 'load_scripts');
 function load_scripts() {
+    global $current_screen;
     wp_enqueue_script( 'wp-react-kickoff', YM_MEETING_URL . 'build/admin-page.js', [ 'jquery', 'wp-element' ], wp_rand(), true );
 	wp_enqueue_style( 'ymMeetingAdminStyle', YM_MEETING_URL . 'build/admin-page.css' );
     wp_localize_script( 'wp-react-kickoff', 'appLocalizer', [
