@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -18,15 +18,16 @@ import { Label } from '@mui/icons-material';
 const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay }) => {
 
 
-    const [startTime,setStartTime]=useState('')
+    const [startTime, setStartTime] = useState('')
     return (
-        <div>
+        <div style={{ width: 1000 }}>
             <Dialog
                 dir="rtl"
                 open={open}
                 keepMounted
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
+
             >
                 <DialogTitle>{"הוספת זמינות ליום" + " " + selctedDay}</DialogTitle>
                 <DialogContent>
@@ -38,22 +39,30 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay }) => {
                         noValidate
                         autoComplete="off"
                     >
-
+                        <p>שים לב <b>AM</b> = <b>לפני</b> חצות היום</p>
+                        <p>שים לב <b>PM</b> = <b>אחרי</b> חצות היום</p>
+                        <hr/>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                         
-                            <FormControlLabel control={<MobileTimePicker
-                            onChange={(newValue) => {
-                                setStartTime(newValue);
-                              }}
-                             sx={{ display: 'none' }}  views={['hours', 'minutes']} />} label={new Date(startTime).toLocaleDateString() + " "+ "בחר שעת התחלה" }
-                           style={{
-                            height: 40,
-                            border: 2,
-                            borderRadius: 8,
-                            borderStyle:'solid'
-                           }}
-                            ></FormControlLabel>
-
+                            <p>שעת התחלה</p>
+                            <MobileTimePicker
+                                onChange={(newValue) => {
+                                    setStartTime(newValue);
+                                }}
+                                sx={{}} views={['hours', 'minutes']} />
+                            <p>שעת סיום</p>
+                            <MobileTimePicker
+                                onChange={(newValue) => {
+                                    setStartTime(newValue);
+                                }}
+                                sx={{}} views={['hours', 'minutes']} />
+                            <p> אורך התור {"(בדקות)"}</p>
+                            <TextField
+                                id="outlined-number"
+                                type="number"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
                         </LocalizationProvider>
                     </Box>
                 </DialogContent>
