@@ -3,7 +3,8 @@ import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
 
 import NewAvailability from './NewAvailability';
 
-const DaysSettings = () => {
+const DaysSettings = ({availabilitys}) => {
+    console.log(availabilitys);
     const [open, setOpen] = useState(false);
     const [selctedDay, setSelctedDay] = useState(null);
     const [selctedDayCode, setSelctedDayCode] = useState(null);
@@ -91,6 +92,9 @@ const DaysSettings = () => {
         <div className='days-settings'>
             <h3>הגדרת זמני פעילות</h3>
             <h2>{appLocalizer.nonce}</h2>
+            {availabilitys.map(availability=>{
+                return <h1>{availability.startTime}</h1>
+            })}
             <div className="day-list">
 
                 {daysList.map(day => {
