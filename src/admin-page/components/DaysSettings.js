@@ -3,7 +3,7 @@ import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
 
 import NewAvailability from './NewAvailability';
 
-const DaysSettings = ({availabilitys}) => {
+const DaysSettings = ({ availabilitys }) => {
     console.log(availabilitys);
     const [open, setOpen] = useState(false);
     const [selctedDay, setSelctedDay] = useState(null);
@@ -16,6 +16,10 @@ const DaysSettings = ({availabilitys}) => {
     const handleClose = () => {
         setOpen(false);
     };
+    const addAvailability = (startTime, endTime, meetingLength) => {
+        handleClose()
+        console.log(startTime.$H, endTime.$H, meetingLength);
+    }
     const daysList = [
         {
             dayCode: 1,
@@ -80,7 +84,7 @@ const DaysSettings = ({availabilitys}) => {
         return dayNams[dayCode - 1]
     }
 
-    const addAvailability = (dayCode) => {
+    const openNewAvailabilityModal = (dayCode) => {
         console.log(getDayName(dayCode));
         setSelctedDayCode(dayCode)
         setSelctedDay(getDayName(dayCode))
@@ -92,7 +96,7 @@ const DaysSettings = ({availabilitys}) => {
         <div className='days-settings'>
             <h3>הגדרת זמני פעילות</h3>
             <h2>{appLocalizer.nonce}</h2>
-            {availabilitys.map(availability=>{
+            {availabilitys.map(availability => {
                 return <h1>{availability.startTime}</h1>
             })}
             <div className="day-list">
@@ -113,7 +117,7 @@ const DaysSettings = ({availabilitys}) => {
                                     </div>
                                 })}
                             </div>
-                            <div onClick={() => addAvailability(day.dayCode)} className="add-availability">
+                            <div onClick={() => openNewAvailabilityModal(day.dayCode)} className="add-availability">
                                 הוספה <MoreTimeOutlinedIcon />
                             </div>
                         </div>
@@ -123,7 +127,7 @@ const DaysSettings = ({availabilitys}) => {
             {/* add dialog */}
 
 
-            <NewAvailability selctedDay={selctedDay} selctedDayCode={selctedDayCode} open={open} handleClose={handleClose} />
+            <NewAvailability selctedDay={selctedDay} selctedDayCode={selctedDayCode} open={open} handleClose={handleClose} addAvailability={addAvailability} />
         </div>
     );
 };
