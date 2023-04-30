@@ -57,7 +57,7 @@ class YmMeettingRestRoutes
         $tablename = $wpdb->prefix . "ym_meeting_availability";
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
-            return new WP_Error( 'rest_error', esc_html__( 'OMG you can not view private data.', 'my-text-domain' ), array( 'status' => 500 ) );
+            return new WP_Error( 'rest_error', esc_html__( 'טבלה לא קיימת, יש להפעיל מחדש את הפלאגין.', 'my-text-domain' ), array( 'status' => 500 ) );
         }
 
         $wpdb->insert(
