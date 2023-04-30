@@ -20,6 +20,16 @@ class YmMeettingRestRoutes
                 'permission_callback' => [$this, 'get_settings_permission']
             ]
         );
+
+        register_rest_route(
+            'ym-meeting/v1',
+            '/settings/availability',
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'add_Availability'],
+                'permission_callback' => [$this, 'get_settings_permission']
+            ]
+        );   
     }
 
 
@@ -39,6 +49,22 @@ class YmMeettingRestRoutes
         return current_user_can('publish_posts');
         // return true;
     }
+
+
+    private function add_Availability($req){
+        global $wpdb;
+        $tablename = $wpdb->prefix . "ym_meeting_availability";
+
+        $wpdb->insert( 
+            $tablename, 
+            array( 
+                'startTime' => $req['startTime'],  
+                'endTime' => $req['endTime'], 
+                'meetingLength' => $req['meetingLength'], 
+                'dayRef' => $req['dayRef'], 
+            ) 
+        );
+  }
 
 }
 

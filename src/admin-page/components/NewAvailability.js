@@ -43,8 +43,6 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay ,addAva
                         noValidate
                         autoComplete="off"
                     >
-                        <p>שים לב <b>AM</b> = <b>לפני</b> חצות היום</p>
-                        <p>שים לב <b>PM</b> = <b>אחרי</b> חצות היום</p>
                         <hr />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <p>שעת התחלה</p>
