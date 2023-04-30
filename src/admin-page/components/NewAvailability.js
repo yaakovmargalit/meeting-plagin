@@ -78,7 +78,7 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay ,addAva
                         setStartTime('')
                         setEndTime('')
                         setMeetingLength(0)
-                        addAvailability(startTime, endTime, meetingLength)
+                        addAvailability(startTime, endTime, meetingLength,selctedDayCode)
                     }}>הוספה</Button>
                 </DialogActions>
             </Dialog>

@@ -11,8 +11,8 @@ const Settings = () => {
         setMeetingSettings(settings)
     }, [])
 
-   async function updateData(){
-      await  addNewAvailability()
+   async function updateData(startTime, endTime, meetingLength,selctedDayCode){
+      await  addNewAvailability(startTime, endTime, meetingLength,selctedDayCode)
       const settings = await getMeetingSettings()
       setMeetingSettings(settings)    }
 

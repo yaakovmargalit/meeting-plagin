@@ -16,9 +16,9 @@ const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const addAvailability = (startTime, endTime, meetingLength) => {
+    const addAvailability = (startTime, endTime, meetingLength,selctedDayCode) => {
         handleClose()
-        addNewAvailability()
+        addNewAvailability(startTime, endTime, meetingLength,selctedDayCode)
         console.log(startTime.$H, endTime.$H, meetingLength);
     }
     const daysList = [

@@ -17,13 +17,13 @@ export async function getMeetingSettings() {
         return error
     }
 }
-export async function addNewAvailability() {
+export async function addNewAvailability(startTime, startime, endTime,selctedDayCode) {
     try {
         const response = await axios.post(appUrl + '/settings/availability', {
-            "startTime": "13:00",
-            "endTime": "18:00",
-            "meetingLength": "40",
-            "dayRef": "4"
+            "startTime": startTime,
+            "endTime": endTime,
+            "meetingLength": startime,
+            "dayRef": selctedDayCode
         },
             {
                 headers: {
