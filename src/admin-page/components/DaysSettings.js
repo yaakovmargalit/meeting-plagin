@@ -3,7 +3,7 @@ import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
 
 import NewAvailability from './NewAvailability';
 
-const DaysSettings = ({ availabilitys }) => {
+const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
     console.log(availabilitys);
     const [open, setOpen] = useState(false);
     const [selctedDay, setSelctedDay] = useState(null);
@@ -18,6 +18,7 @@ const DaysSettings = ({ availabilitys }) => {
     };
     const addAvailability = (startTime, endTime, meetingLength) => {
         handleClose()
+        addNewAvailability()
         console.log(startTime.$H, endTime.$H, meetingLength);
     }
     const daysList = [
