@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
-
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NewAvailability from './NewAvailability';
 
 const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
@@ -70,6 +70,15 @@ console.log(daysList);
         handleClickOpen()
     }
 
+    const deleteAvailability = (id)=>{
+        const conf = confirm("מחיקה! האם אתה בטוח?")
+        if(!conf){
+            console.log(conf);
+            return
+        }
+        console.log(conf);
+    }
+
 
     return (
         <div className='days-settings'>
@@ -90,6 +99,9 @@ console.log(daysList);
                                         <p>התחלה: {avlb.startTime}</p>
                                         <p>סיום: {avlb.endTime}</p>
                                         <p>אורך התור {'(בדקות)'}: {avlb.meetingLength}</p>
+                                        <div onClick={()=>deleteAvailability(avlb.id)} className="delete-availability">
+                                            <DeleteOutlineIcon/>
+                                        </div>
                                     </div>
                                 })}
                             </div>

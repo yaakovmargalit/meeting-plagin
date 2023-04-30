@@ -21,9 +21,23 @@
           border-radius: 5px;
           margin-bottom: 8px;
           padding: 5px;
+          position: relative;
           p {
             margin-top: 5px;
             margin-bottom: 5px;
+          }
+          .delete-availability{
+            display: none;
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            cursor: pointer;
+            color: rgb(132, 42, 42);
+          }
+          &:hover{
+            .delete-availability{
+              display: flex;
+            }
           }
         }
       }
