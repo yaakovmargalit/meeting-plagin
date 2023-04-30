@@ -26,7 +26,7 @@ class YmMeettingRestRoutes
             '/settings/availability',
             [
                 'methods' => 'POST',
-                'callback' => [$this, 'add_Availability'],
+                'callback' => [$this, 'add_availability'],
                 'permission_callback' => [$this, 'get_settings_permission']
             ]
         );   
@@ -46,12 +46,12 @@ class YmMeettingRestRoutes
 
     public function get_settings_permission()
     {
-        return current_user_can('publish_posts');
-        // return true;
+        // return current_user_can('publish_posts');
+        return true;
     }
 
 
-    private function add_Availability($req){
+    private function add_availability($req){
         global $wpdb;
         $tablename = $wpdb->prefix . "ym_meeting_availability";
 
@@ -64,6 +64,8 @@ class YmMeettingRestRoutes
                 'dayRef' => $req['dayRef'], 
             ) 
         );
+        return rest_ensure_response('');
+
   }
 
 }
