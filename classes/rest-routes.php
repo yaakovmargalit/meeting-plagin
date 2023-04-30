@@ -29,14 +29,14 @@ class YmMeettingRestRoutes
                 'callback' => [$this, 'add_availability'],
                 'permission_callback' => [$this, 'get_settings_permission']
             ]
-        );   
+        );
     }
 
 
     public function get_settings()
     {
         global $wpdb;
-        $availabilitys = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}ym_meeting_availability", OBJECT );
+        $availabilitys = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}ym_meeting_availability", OBJECT);
         $response = [
             'availabilitys' => $availabilitys
         ];
@@ -51,21 +51,32 @@ class YmMeettingRestRoutes
     }
 
 
-    public function add_availability($req){
+    public function add_availability($req)
+    {
         global $wpdb;
         $tablename = $wpdb->prefix . "ym_meeting_availability";
 
-        $wpdb->insert( 
-            $tablename, 
-            array( 
-                'startTime' => $req['startTime'],  
-                'endTime' => $req['endTime'], 
-                'meetingLength' => $req['meetingLength'], 
-                'dayRef' => $req['dayRef'], 
-            ) 
+        if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
+            return new WP_Error( 'rest_error', esc_html__( 'OMG you can not view private data.', 'my-text-domain' ), array( 'status' => 500 ) );
+        }
+
+        $wpdb->insert(
+            $tablename,
+            [
+                'startTime' => $req['startTime'],
+                'endTime' => $req['endTime'],
+                'meetingLength' => $req['meetingLength'],
+                'dayRef' => $req['dayRef'],
+            ],
+            [
+                '%s',
+                '%s',
+                '%d',
+                '%d',
+            ]
         );
-        return rest_ensure_response( 'success' );
-  }
+        return rest_ensure_response('success');
+    }
 
 }
 
