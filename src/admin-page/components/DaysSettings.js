@@ -23,62 +23,40 @@ const DaysSettings = ({ availabilitys }) => {
     const daysList = [
         {
             dayCode: 1,
-            availability: [
-                {
-                    start: '09:30',
-                    end: '15:45',
-                    meetingLength: '45'
-                }
-            ]
+            availability:availabilitys.filter(ava=>ava.dayRef==1)
         },
         {
             dayCode: 2,
-            availability: [
-                {
-                    start: '09:30',
-                    end: '15:45',
-                    meetingLength: '45'
-                }
-            ]
+            availability:availabilitys.filter(ava=>ava.dayRef==2)
+
         },
         {
             dayCode: 3,
-            availability: [
-                {
-                    start: '09:30',
-                    end: '15:45',
-                    meetingLength: '45'
-                }
-            ]
+            availability:availabilitys.filter(ava=>ava.dayRef==3)
+
         },
         {
             dayCode: 4,
-            availability: [
-                {
-                    start: '09:30',
-                    end: '15:45',
-                    meetingLength: '45'
-                }
-            ]
+            availability:availabilitys.filter(ava=>ava.dayRef==4)
+
         },
         {
             dayCode: 5,
-            availability: [
-                {
-                    start: '09:30',
-                    end: '15:45',
-                    meetingLength: '45'
-                }
-            ]
+            availability:availabilitys.filter(ava=>ava.dayRef==5)
+
         },
         {
             dayCode: 6,
+            availability:availabilitys.filter(ava=>ava.dayRef==6)
+
         },
         {
             dayCode: 7,
+            availability:availabilitys.filter(ava=>ava.dayRef==7)
+
         },
     ]
-
+console.log(daysList);
     const getDayName = (dayCode) => {
         const dayNams = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
         return dayNams[dayCode - 1]
@@ -96,9 +74,6 @@ const DaysSettings = ({ availabilitys }) => {
         <div className='days-settings'>
             <h3>הגדרת זמני פעילות</h3>
             <h2>{appLocalizer.nonce}</h2>
-            {availabilitys.map(availability => {
-                return <h1>{availability.startTime}</h1>
-            })}
             <div className="day-list">
 
                 {daysList.map(day => {
@@ -111,8 +86,8 @@ const DaysSettings = ({ availabilitys }) => {
 
                                 {day.availability?.map(avlb => {
                                     return <div className="availability-box">
-                                        <p>התחלה: {avlb.start}</p>
-                                        <p>סיום: {avlb.end}</p>
+                                        <p>התחלה: {avlb.startTime}</p>
+                                        <p>סיום: {avlb.endTime}</p>
                                         <p>אורך התור {'(בדקות)'}: {avlb.meetingLength}</p>
                                     </div>
                                 })}
