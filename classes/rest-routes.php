@@ -51,7 +51,7 @@ class YmMeettingRestRoutes
     }
 
 
-    private function add_availability($req){
+    public function add_availability($req){
         global $wpdb;
         $tablename = $wpdb->prefix . "ym_meeting_availability";
 
@@ -64,8 +64,7 @@ class YmMeettingRestRoutes
                 'dayRef' => $req['dayRef'], 
             ) 
         );
-        return rest_ensure_response('');
-
+        return rest_ensure_response( 'success' );
   }
 
 }
