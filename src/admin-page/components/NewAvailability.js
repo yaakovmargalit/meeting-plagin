@@ -75,10 +75,10 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay ,addAva
                         handleClose()
                     }}>ביטול</Button>
                     <Button onClick={() => {
+                        addAvailability(startTime, endTime, meetingLength,selctedDayCode)
                         setStartTime('')
                         setEndTime('')
                         setMeetingLength(0)
-                        addAvailability(startTime, endTime, meetingLength,selctedDayCode)
                     }}>הוספה</Button>
                 </DialogActions>
             </Dialog>

@@ -17,9 +17,10 @@ const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
         setOpen(false);
     };
     const addAvailability = (startTime, endTime, meetingLength,selctedDayCode) => {
+        startTime = startTime.hour() + ':'+startTime.minute()
+        endTime = endTime.hour() + ':'+endTime.minute()
         handleClose()
         addNewAvailability(startTime, endTime, meetingLength,selctedDayCode)
-        console.log(startTime.$H, endTime.$H, meetingLength);
     }
     const daysList = [
         {
