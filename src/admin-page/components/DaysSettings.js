@@ -83,7 +83,6 @@ const DaysSettings = ({ availabilitys, addNewAvailability, deleteAvailability })
     return (
         <div className='days-settings'>
             <h3>הגדרת זמני פעילות</h3>
-            <h2>{appLocalizer.nonce}</h2>
             <div className="day-list">
 
                 {daysList.map(day => {

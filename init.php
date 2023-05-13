@@ -5,11 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-
-
-
-
 class Create_front_app
 {
 
