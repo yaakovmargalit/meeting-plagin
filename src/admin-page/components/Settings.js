@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import DaysSettings from './DaysSettings';
 import { getMeetingSettings, removeAvailability } from '../service'
 import { addNewAvailability } from '../service'
+import MeetingsList from './MeetingsList';
 
 
 function TabPanel(props) {
@@ -73,7 +74,8 @@ const Settings = () => {
         <Tab label="הגדרות"  {...a11yProps(1)} />
       </Tabs>
 
-      <TabPanel dir="rtl" value={value} index={0} >
+      <TabPanel  value={value} index={0} >
+      <MeetingsList></MeetingsList>
         </TabPanel>
         <TabPanel dir="rtl" value={value} index={1}>
           <DaysSettings deleteAvailability={deleteAvailability} addNewAvailability={updateData} availabilitys={meetingSettings.availabilitys} />
