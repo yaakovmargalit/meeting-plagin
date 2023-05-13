@@ -116,7 +116,7 @@ console.log(daysList);
             {/* add dialog */}
 
 
-            <NewAvailability selctedDay={selctedDay} selctedDayCode={selctedDayCode} open={open} handleClose={handleClose} addAvailability={addAvailability} />
+            <NewAvailability keepMounted selctedDay={selctedDay} selctedDayCode={selctedDayCode} open={open} handleClose={handleClose} addAvailability={addAvailability} />
         </div>
     );
 };

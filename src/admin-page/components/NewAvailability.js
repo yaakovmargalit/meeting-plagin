@@ -49,11 +49,13 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay ,addAva
                             <TimeField
                                 onChange={(newValue) => setStartTime(newValue)}
                                 format="HH:mm"
+                                value={startTime}
                             />
                             <p>שעת סיום</p>
                             <TimeField
                                 onChange={(newValue) => setEndTime(newValue)}
                                 format="HH:mm"
+                                value={endTime}
                             />
                             <p> אורך התור {"(בדקות)"}</p>
                             <TextField
@@ -63,6 +65,7 @@ const NewAvailability = ({ open, handleClose, selctedDayCode, selctedDay ,addAva
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                value={meetingLength}
                             />
                         </LocalizationProvider>
                     </Box>
