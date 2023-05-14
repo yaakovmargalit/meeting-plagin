@@ -41,10 +41,10 @@ class YmMeettingRestRoutes
         );
         register_rest_route(
             'ym-meeting/v1',
-            '/app/availabDays',
+            '/app/availablDays',
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'get_availab_days'],
+                'callback' => [$this, 'get_availabl_days'],
                 'permission_callback' => [$this, 'pront_permission']
             ]
         );
@@ -115,7 +115,7 @@ class YmMeettingRestRoutes
 
         return rest_ensure_response('success');
     }
-    public function get_availab_days()
+    public function get_availabl_days()
     {
         global $wpdb;
         $tablename = $wpdb->prefix . "ym_meeting_availability";
