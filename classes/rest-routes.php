@@ -30,6 +30,15 @@ class YmMeettingRestRoutes
                 'permission_callback' => [$this, 'get_settings_permission']
             ]
         );
+        register_rest_route(
+            'ym-meeting/v1',
+            '/settings/availability',
+            [
+                'methods' => 'DELETE',
+                'callback' => [$this, 'delete_availability'],
+                'permission_callback' => [$this, 'get_settings_permission']
+            ]
+        );
     }
 
 
@@ -57,7 +66,7 @@ class YmMeettingRestRoutes
         $tablename = $wpdb->prefix . "ym_meeting_availability";
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
-            return new WP_Error( 'rest_error', esc_html__( 'טבלה לא קיימת, יש להפעיל מחדש את הפלאגין.', 'my-text-domain' ), array( 'status' => 500 ) );
+            return new WP_Error('rest_error', esc_html__('טבלה לא קיימת, יש להפעיל מחדש את הפלאגין.', 'my-text-domain'), array('status' => 500));
         }
 
         $wpdb->insert(
@@ -75,6 +84,21 @@ class YmMeettingRestRoutes
                 '%d',
             ]
         );
+        return rest_ensure_response('success');
+    }
+    public function delete_availability($req)
+    {
+        global $wpdb;
+        $tablename = $wpdb->prefix . "ym_meeting_availability";
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
+            return new WP_Error('rest_error', esc_html__('טבלה לא קיימת, יש להפעיל מחדש את הפלאגין.', 'my-text-domain'), array('status' => 500));
+        }
+
+        $id = $req['id'];
+        $wpdb->delete($tablename, array('id' => $id));
+
+
         return rest_ensure_response('success');
     }
 

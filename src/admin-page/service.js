@@ -39,3 +39,22 @@ export async function addNewAvailability(startTime, endTime, meetingLength, selc
         return error
     }
 }
+export async function removeAvailability(id) {
+    try {
+        const response = await axios.delete(appUrl + '/settings/availability',
+            {
+                data: {
+                    id
+                },
+                headers: {
+                    'X-WP-NONCE': appLocalizer.nonce
+                }
+            }
+        )
+        const deleted = response.data
+        console.log(deleted);
+        return deleted;
+    } catch (error) {
+        return error
+    }
+}

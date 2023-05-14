@@ -3,7 +3,7 @@ import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NewAvailability from './NewAvailability';
 
-const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
+const DaysSettings = ({ availabilitys, addNewAvailability, deleteAvailability }) => {
     console.log(availabilitys);
     const [open, setOpen] = useState(false);
     const [selctedDay, setSelctedDay] = useState(null);
@@ -16,49 +16,48 @@ const DaysSettings = ({ availabilitys ,addNewAvailability}) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const addAvailability = (startTime, endTime, meetingLength,selctedDayCode) => {
-        startTime = startTime.hour() + ':'+startTime.minute()
-        endTime = endTime.hour() + ':'+endTime.minute()
+    const addAvailability = (startTime, endTime, meetingLength, selctedDayCode) => {
+        startTime = startTime.hour() + ':' + startTime.minute()
+        endTime = endTime.hour() + ':' + endTime.minute()
         handleClose()
-        addNewAvailability(startTime, endTime, meetingLength,selctedDayCode)
+        addNewAvailability(startTime, endTime, meetingLength, selctedDayCode)
     }
     const daysList = [
         {
             dayCode: 1,
-            availability:availabilitys.filter(ava=>ava.dayRef==1)
+            availability: availabilitys.filter(ava => ava.dayRef == 1)
         },
         {
             dayCode: 2,
-            availability:availabilitys.filter(ava=>ava.dayRef==2)
+            availability: availabilitys.filter(ava => ava.dayRef == 2)
 
         },
         {
             dayCode: 3,
-            availability:availabilitys.filter(ava=>ava.dayRef==3)
+            availability: availabilitys.filter(ava => ava.dayRef == 3)
 
         },
         {
             dayCode: 4,
-            availability:availabilitys.filter(ava=>ava.dayRef==4)
+            availability: availabilitys.filter(ava => ava.dayRef == 4)
 
         },
         {
             dayCode: 5,
-            availability:availabilitys.filter(ava=>ava.dayRef==5)
+            availability: availabilitys.filter(ava => ava.dayRef == 5)
 
         },
         {
             dayCode: 6,
-            availability:availabilitys.filter(ava=>ava.dayRef==6)
+            availability: availabilitys.filter(ava => ava.dayRef == 6)
 
         },
         {
             dayCode: 7,
-            availability:availabilitys.filter(ava=>ava.dayRef==7)
+            availability: availabilitys.filter(ava => ava.dayRef == 7)
 
         },
     ]
-console.log(daysList);
     const getDayName = (dayCode) => {
         const dayNams = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
         return dayNams[dayCode - 1]
@@ -71,20 +70,19 @@ console.log(daysList);
         handleClickOpen()
     }
 
-    const deleteAvailability = (id)=>{
+    const deleteAval = (id) => {
         const conf = confirm("מחיקה! האם אתה בטוח?")
-        if(!conf){
+        if (!conf) {
             console.log(conf);
             return
         }
-        console.log(conf);
+        deleteAvailability(id)
     }
 
 
     return (
         <div className='days-settings'>
             <h3>הגדרת זמני פעילות</h3>
-            <h2>{appLocalizer.nonce}</h2>
             <div className="day-list">
 
                 {daysList.map(day => {
@@ -100,8 +98,8 @@ console.log(daysList);
                                         <p>התחלה: {avlb.startTime}</p>
                                         <p>סיום: {avlb.endTime}</p>
                                         <p>אורך התור {'(בדקות)'}: {avlb.meetingLength}</p>
-                                        <div onClick={()=>deleteAvailability(avlb.id)} className="delete-availability">
-                                            <DeleteOutlineIcon/>
+                                        <div onClick={() => deleteAval(avlb.id)} className="delete-availability">
+                                            <DeleteOutlineIcon />
                                         </div>
                                     </div>
                                 })}
