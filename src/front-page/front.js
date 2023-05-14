@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FrontApp from './FrontApp';
-import "./styles.scss"
+import "./styles/front.scss"
 // const divsToUpdate = document.querySelectorAll(".ym-meeting-front-app")
 // console.log(divsToUpdate);
 // divsToUpdate.forEach(function (div) {
