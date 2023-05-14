@@ -39,6 +39,15 @@ class YmMeettingRestRoutes
                 'permission_callback' => [$this, 'get_settings_permission']
             ]
         );
+        register_rest_route(
+            'ym-meeting/v1',
+            '/app/availabDays',
+            [
+                'methods' => 'GET',
+                'callback' => [$this, 'get_availab_days'],
+                'permission_callback' => [$this, 'pront_permission']
+            ]
+        );
     }
 
 
@@ -54,6 +63,11 @@ class YmMeettingRestRoutes
     }
 
     public function get_settings_permission()
+    {
+        return current_user_can('publish_posts');
+        // return true;
+    }
+    public function pront_permission()
     {
         // return current_user_can('publish_posts');
         return true;
@@ -100,6 +114,32 @@ class YmMeettingRestRoutes
 
 
         return rest_ensure_response('success');
+    }
+    public function get_availab_days()
+    {
+        global $wpdb;
+        $tablename = $wpdb->prefix . "ym_meeting_availability";
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$tablename'") != $tablename) {
+            return new WP_Error('rest_error', esc_html__('טבלה לא קיימת, יש להפעיל מחדש את הפלאגין.', 'my-text-domain'), array('status' => 500));
+        }
+
+        $aval= $wpdb->get_results("SELECT * FROM {$wpdb->prefix}ym_meeting_availability", OBJECT);
+
+        $availaDays = array();
+
+        foreach($aval as $object) {
+            // בדיקה אם הערך של dayref קיים במערך צדדי
+            if(!in_array($object->dayRef, $availaDays)) {
+                // אם הערך לא קיים, הוספתו למערך צדדי
+                $availaDays[] = $object->dayRef;
+            }
+        }
+        $response = [
+            'availaDays' => $availaDays
+        ];
+
+        return rest_ensure_response($response);
     }
 
 }

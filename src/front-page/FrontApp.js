@@ -1,9 +1,10 @@
 import React from 'react';
+import MeetingSet from './components/MeetingSet';
 
 function FrontApp() {
     return(
         <React.Fragment>
-            <h1>Front App נסיוןםןוףםדיכגשד</h1>
+            <MeetingSet></MeetingSet>
         </React.Fragment>
     )
 }
