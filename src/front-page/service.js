@@ -1,10 +1,11 @@
-const appUrl = `http://localhost/wordpress/wp-json/ym-meeting/v1`
+const appUrl = `${ymMeetingFrontData.apiUrl}`
+console.log(appUrl);
 import axios from 'axios';
 
 
 export async function getAvailablDays() {
     try {
-        const response = await fetch(appUrl + '/app/availablDays')
+        const response = await fetch(appUrl + '/ym-meeting/v1/app/availablDays')
         const availablDays = await response.json()
         console.log(availablDays);
         return availablDays;
