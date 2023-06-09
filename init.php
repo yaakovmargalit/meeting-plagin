@@ -36,10 +36,10 @@ define ( 'YM_MEETING_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define ( 'YM_MEETING_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
 
 add_action( 'admin_enqueue_scripts', 'load_scripts');
-add_action( 'wp_enqueue_scripts', 'ym_meeting_enqueue_script' );
+add_action( 'wp_enqueue_scripts', 'ym_meeting_enqueue_script' ,4);
  function  ym_meeting_enqueue_script() {
     global $current_screen;
-    wp_enqueue_script( 'ym_meeting_front_script', YM_MEETING_URL . 'build/fake.js', ['jquery', 'wp-element'], wp_rand(), true );
+    wp_enqueue_script( 'ym_meeting_front_script', YM_MEETING_URL . 'build/front.js', [ ], wp_rand(), true );
 
     wp_localize_script( 'ym_meeting_front_script', 'ymMeetingFrontData', [
         'apiUrl' => home_url( '/wp-json' )

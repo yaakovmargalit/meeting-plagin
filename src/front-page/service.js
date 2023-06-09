@@ -1,4 +1,4 @@
-const appUrl = `${ymMeetingFrontData.apiUrl}`
+const appUrl = `${ymMeetingFrontData.apiUrl||""}`
 console.log(appUrl);
 import axios from 'axios';
 
